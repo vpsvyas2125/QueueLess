@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0b16">
+
+    <title>QueueLess | Live Queue Display</title>
+
+    <link rel="stylesheet" href="display.css">
+    <script src="display.js" defer></script>
+</head>
+
+<body>
+    <header class="topbar">
+        <a class="brand" href="index.html">
+            <span class="brand-icon">Q</span>
+            <span>Queue<span class="brand-accent">Less</span></span>
+        </a>
+
+        <div class="live-indicator">
+            <span class="live-dot"></span>
+            <span id="connectionStatus">Connecting...</span>
+        </div>
+
+        <div class="clock" id="clock">--:--:--</div>
+    </header>
+
+    <main class="dashboard">
+        <section class="welcome">
+            <p class="eyebrow">CUSTOMER QUEUE MANAGEMENT</p>
+            <h1>Your time matters.<br><span>We'll call you soon.</span></h1>
+            <p class="subtitle">
+                Please keep your token ready and watch the live display.
+            </p>
+        </section>
+
+        <section class="main-grid">
+            <article class="serving-card">
+                <div class="card-heading">
+                    <span class="heading-icon">◉</span>
+                    <span>NOW SERVING</span>
+                </div>
+
+                <div id="servingToken" class="serving-token">---</div>
+
+                <p id="servingName" class="serving-name">
+                    Waiting for the next customer
+                </p>
+
+                <div class="serving-footer">
+                    <span class="pulse"></span>
+                    <span id="servingMessage">Ready for service</span>
+                </div>
+            </article>
+
+            <article class="stats-card">
+                <div class="card-heading">
+                    <span class="heading-icon">◎</span>
+                    <span>QUEUE OVERVIEW</span>
+                </div>
+
+                <div class="stat-row">
+                    <div>
+                        <span class="stat-label">People waiting</span>
+                        <p class="stat-description">Customers in line</p>
+                    </div>
+                    <strong id="waitingCount">0</strong>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-row">
+                    <div>
+                        <span class="stat-label">Completed today*</span>
+                        <p class="stat-description">Completed in current queue</p>
+                    </div>
+                    <strong id="completedCount">0</strong>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-row">
+                    <div>
+                        <span class="stat-label">Estimated wait</span>
+                        <p class="stat-description">Approximate waiting time</p>
+                    </div>
+                    <strong id="estimatedWait">—</strong>
+                </div>
+            </article>
+        </section>
+
+        <section class="waiting-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">UP NEXT</p>
+                    <h2>Waiting Queue</h2>
+                </div>
+
+                <span class="queue-badge" id="queueBadge">0 waiting</span>
+            </div>
+
+            <div class="waiting-grid" id="waitingList">
+                <div class="empty-card">
+                    <span class="empty-icon">✓</span>
+                    <h3>No customers waiting</h3>
+                    <p>New tokens will appear here automatically.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="notice">
+            <span class="notice-icon">ⓘ</span>
+            <p>
+                Please listen for your token number and proceed when called.
+                If you miss your turn, contact the service desk.
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span>QueueLess <span class="brand-accent">●</span> Smart Queue Management</span>
+        <div class="footer-right">
+            <span id="lastUpdated">Waiting for data...</span>
+            <button id="soundButton" class="utility-button" type="button">
+                🔔 Sound: Off
+            </button>
+            <button id="fullscreenButton" class="utility-button" type="button">
+                ⛶ Fullscreen
+            </button>
+        </div>
+    </footer>
+</body>
+</html>
+

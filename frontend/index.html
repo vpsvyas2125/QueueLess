@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QueueLess | Virtual Queue Management</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+
+        <div class="logo">
+            <span class="logo-icon">Q</span>
+            <span>QueueLess<span class="dot">.</span></span>
+        </div>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#queue">My Queue</a>
+        </div>
+
+        <button class="nav-button" onclick="showJoinForm()">
+            Get a Token →
+        </button>
+
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                <span class="live-dot"></span>
+                THE SMARTER WAY TO WAIT
+            </div>
+
+            <h1>
+                Your time matters.<br>
+                <span>Waiting doesn't.</span>
+            </h1>
+
+            <p>
+                Join a virtual queue, track your position in real time,
+                and arrive just when it's your turn. No more standing in line.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary-button" onclick="showJoinForm()">
+                    Join a Queue →
+                </button>
+
+                <button class="secondary-button" onclick="scrollToServices()">
+                    Explore Services
+                </button>
+
+            </div>
+
+            <div class="hero-stats">
+
+                <div>
+                    <h3>75%</h3>
+                    <p>Less perceived waiting</p>
+                </div>
+
+                <div>
+                    <h3>24/7</h3>
+                    <p>Queue access</p>
+                </div>
+
+                <div>
+                    <h3>0</h3>
+                    <p>Physical lines required</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Live Queue Preview -->
+        <div class="queue-preview">
+
+            <div class="preview-header">
+
+                <div>
+                    <p class="small-label">LIVE QUEUE STATUS</p>
+                    <h2>Your place in line</h2>
+                </div>
+
+                <span class="live-badge">● LIVE</span>
+
+            </div>
+
+
+            <div class="serving-box">
+
+                <p>CURRENTLY SERVING</p>
+
+                <h1 id="currentToken">A-104</h1>
+
+                <span>Counter 01 · General Enquiries</span>
+
+            </div>
+
+
+            <div class="queue-information">
+
+                <div>
+                    <p>People ahead</p>
+                    <h2 id="peopleAhead">4</h2>
+                </div>
+
+                <div>
+                    <p>Estimated wait</p>
+                    <h2><span id="waitTime">24</span> min</h2>
+                </div>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <div class="progress-bar" id="progressBar"></div>
+
+            </div>
+
+            <p class="preview-footer">
+                ✦ Keep doing what you love. We'll keep your place.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Services -->
+    <section class="services-section" id="services">
+
+        <div class="section-heading">
+
+            <p class="section-label">SIMPLE. SMART. SEAMLESS.</p>
+
+            <h2>One platform.<br><span>Every queue.</span></h2>
+
+            <p>
+                From quick appointments to busy service counters,
+                QueueLess helps you skip the physical line.
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+            <div class="service-card">
+
+                <div class="service-icon">🏥</div>
+
+                <h3>Clinics & Healthcare</h3>
+
+                <p>
+                    Manage patient queues and reduce crowded waiting rooms.
+                </p>
+
+                <button onclick="selectService('Clinic Consultation')">
+                    Join queue →
+                </button>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">💈</div>
+
+                <h3>Salons & Barbershops</h3>
+
+                <p>
+                    Let customers relax while tracking their appointment turn.
+                </p>
+
+                <button onclick="selectService('Salon Appointment')">
+                    Join queue →
+                </button>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">🎓</div>
+
+                <h3>College Offices</h3>
+
+                <p>
+                    Organize student enquiries, certificates, and fee counters.
+                </p>
+
+                <button onclick="selectService('College Office')">
+                    Join queue →
+                </button>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">🏢</div>
+
+                <h3>Service Centers</h3>
+
+                <p>
+                    Streamline customer service with a digital token system.
+                </p>
+
+                <button onclick="selectService('Service Center')">
+                    Join queue →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Join Queue Form -->
+    <section class="join-section" id="joinSection">
+
+        <div class="join-card">
+
+            <p class="section-label">YOUR TIME, YOUR CHOICE</p>
+
+            <h2>Get your digital token.</h2>
+
+            <p class="form-description">
+                Enter your details and reserve your place in the queue.
+            </p>
+
+
+            <form id="queueForm">
+
+                <label for="customerName">Your name</label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Enter your full name"
+                    maxlength="50"
+                    required
+                >
+
+
+                <label for="serviceType">Choose a service</label>
+
+                <select id="serviceType" required>
+
+                    <option value="">Select a service</option>
+
+                    <option value="Clinic Consultation">
+                        Clinic Consultation
+                    </option>
+
+                    <option value="Salon Appointment">
+                        Salon Appointment
+                    </option>
+
+                    <option value="College Office">
+                        College Office
+                    </option>
+
+                    <option value="Service Center">
+                        Service Center
+                    </option>
+
+                </select>
+
+
+                <button type="submit" class="primary-button form-button">
+                    Generate My Token →
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- Token Result -->
+        <div class="token-result" id="tokenResult">
+
+            <div class="success-icon">✓</div>
+
+            <p class="section-label">TOKEN GENERATED SUCCESSFULLY</p>
+
+            <h2>You're in the queue!</h2>
+
+            <div class="token-number" id="generatedToken">A-105</div>
+            <div id="qrCodeContainer" style="display: none; margin-top: 20px; text-align: center;">
+    <h3>Scan to Track Your Token</h3>
+    <canvas id="qrCodeCanvas"></canvas>
+    <p>Scan this QR code to check your token status.</p>
+</div>
+
+            <p id="customerGreeting"></p>
+
+            <div class="result-information">
+
+                <div>
+                    <p>Estimated wait</p>
+                    <h3><span id="resultWait">24</span> minutes</h3>
+                </div>
+
+                <div>
+                    <p>People ahead</p>
+                    <h3 id="resultAhead">4</h3>
+                </div>
+
+            </div>
+
+            <p class="result-note">
+                Keep your token number safe. Check your position before returning.
+            </p>
+
+        </div>
+        
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="logo">
+            <span class="logo-icon">Q</span>
+            <span>QueueLess<span class="dot">.</span></span>
+        </div>
+
+        <p>Less waiting. More living.</p>
+
+        <p class="copyright">
+            © 2026 QueueLess. Built for better experiences.
+        </p>
+
+    </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.1/qrcode.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0b16">
+    <title>Track My Token | QueueLess</title>
+    <link rel="stylesheet" href="track.css">
+    <script src="track.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <a href="index.html" class="brand">
+            <span class="brand-icon">Q</span>
+            <span>Queue<span class="accent">Less</span></span>
+        </a>
+        <span class="live-label"><span class="dot"></span> Live Tracking</span>
+    </header>
+
+    <main class="container">
+        <section class="tracking-card">
+            <p class="eyebrow">YOUR QUEUE, YOUR TIME</p>
+            <h1>Track your <span class="accent">token</span></h1>
+            <p class="subtitle">Stay updated while you wait for your turn.</p>
+
+            <div id="loading" class="message-box">
+                Loading your token...
+            </div>
+
+            <div id="error" class="message-box error" hidden></div>
+
+            <div id="tokenDetails" hidden>
+                <div class="token-box">
+                    <p class="label">YOUR TOKEN</p>
+                    <h2 id="tokenNumber">---</h2>
+                    <p id="customerName">Customer</p>
+                </div>
+
+                <div class="status-box">
+                    <span class="label">CURRENT STATUS</span>
+                    <span id="tokenStatus" class="status-pill">Waiting</span>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat">
+                        <span class="label">Customers ahead</span>
+                        <strong id="position">—</strong>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Estimated wait</span>
+                        <strong id="waitTime">—</strong>
+                    </div>
+                </div>
+
+                <div class="service-box">
+                    <span class="label">SELECTED SERVICE</span>
+                    <p id="serviceName">—</p>
+                </div>
+
+                <p id="lastUpdated" class="updated"></p>
+            </div>
+
+            <button id="refreshButton" class="refresh-button" type="button">
+                ↻ Refresh Status
+            </button>
+
+            <p class="footer-note">
+                Keep this page open to check your latest queue status.
+            </p>
+        </section>
+    </main>
+</body>
+</html>
+

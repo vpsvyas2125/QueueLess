@@ -1,0 +1,558 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1020">
+
+    <meta
+        name="description"
+        content="QueueLess administrator dashboard for managing customer queues, service counters, and queue analytics."
+    >
+
+    <title>QueueLess | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- =====================================
+         SIDEBAR
+    ====================================== -->
+
+    <aside class="sidebar" aria-label="Main navigation">
+
+        <a href="index.html" class="brand">
+            Queue<span>Less</span>
+        </a>
+
+        <p class="menu-label">WORKSPACE</p>
+
+        <nav>
+            <a href="#dashboardSection" class="nav-link active">
+                ▦ &nbsp; Dashboard
+            </a>
+
+            <a href="#analyticsSection" class="nav-link">
+                ▥ &nbsp; Analytics
+            </a>
+
+            <a href="#counterPanel" class="nav-link">
+                ⊞ &nbsp; Service Counters
+            </a>
+
+            <a href="#queueSection" class="nav-link">
+                ☷ &nbsp; Customer Queue
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="admin-profile">
+                <div class="avatar" aria-hidden="true">A</div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Queue Manager</small>
+                </div>
+            </div>
+
+            <a href="index.html" class="nav-link">
+                ↗ &nbsp; View Website
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================
+         MAIN CONTENT
+    ====================================== -->
+
+    <main class="main-content">
+
+        <!-- HEADER -->
+
+        <header class="topbar" id="dashboardSection">
+
+            <div>
+                <p class="eyebrow">WORKSPACE / OVERVIEW</p>
+
+                <h1>Dashboard</h1>
+
+                <p class="subtitle">
+                    Monitor your queue and manage customer flow.
+                </p>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button
+                    class="secondary-btn"
+                    id="resetBtn"
+                    type="button"
+                >
+                    Reset Demo Data
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    id="logoutBtn"
+                    type="button"
+                >
+                    Logout ↗
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- WELCOME BANNER -->
+
+        <section class="welcome-banner">
+
+            <div>
+                <p class="banner-tag">QUEUE MANAGEMENT SYSTEM</p>
+
+                <h2>Welcome back, Administrator 👋</h2>
+
+                <p>
+                    Here's what's happening with your queue today.
+                </p>
+            </div>
+
+            <div class="banner-icon" aria-hidden="true">◷</div>
+
+        </section>
+
+
+        <!-- =====================================
+             OVERVIEW STATISTICS
+        ====================================== -->
+
+        <section class="stats-grid" aria-label="Queue statistics">
+
+            <article class="stat-card">
+
+                <div class="stat-top">
+                    <span>Total Customers</span>
+                    <span class="stat-icon purple" aria-hidden="true">♙</span>
+                </div>
+
+                <h2 id="totalCount" aria-live="polite">0</h2>
+
+                <p>All queue entries</p>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-top">
+                    <span>Waiting</span>
+                    <span class="stat-icon orange" aria-hidden="true">◷</span>
+                </div>
+
+                <h2 id="waitingCount" aria-live="polite">0</h2>
+
+                <p>Customers in line</p>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-top">
+                    <span>Now Serving</span>
+                    <span class="stat-icon blue" aria-hidden="true">➜</span>
+                </div>
+
+                <h2 id="servingCount" aria-live="polite">0</h2>
+
+                <p>Currently being served</p>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-top">
+                    <span>Completed</span>
+                    <span class="stat-icon green" aria-hidden="true">✓</span>
+                </div>
+
+                <h2 id="completedCount" aria-live="polite">0</h2>
+
+                <p>Service completed</p>
+
+            </article>
+
+        </section>
+
+
+        <!-- =====================================
+             ANALYTICS DASHBOARD
+        ====================================== -->
+
+        <section
+            class="analytics-section"
+            id="analyticsSection"
+            aria-labelledby="analyticsHeading"
+        >
+
+            <div class="section-heading">
+
+                <div>
+                    <p class="eyebrow">PERFORMANCE OVERVIEW</p>
+
+                    <h2 id="analyticsHeading">Queue Analytics</h2>
+
+                    <p class="subtitle">
+                        Understand customer flow and service efficiency.
+                    </p>
+                </div>
+
+                <div class="date-control">
+
+                    <label for="analyticsDate">Select date</label>
+
+                    <input
+                        type="date"
+                        id="analyticsDate"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="analytics-status"
+                id="analyticsStatus"
+                role="status"
+                aria-live="polite"
+            >
+                Loading analytics...
+            </div>
+
+
+            <!-- ANALYTICS SUMMARY -->
+
+            <div class="analytics-stats-grid">
+
+                <article class="analytics-card">
+
+                    <div class="analytics-card-top">
+                        <span>Customers Today</span>
+                        <span class="analytics-icon purple" aria-hidden="true">♙</span>
+                    </div>
+
+                    <h3 id="analyticsTotal">—</h3>
+
+                    <p>Total tokens generated</p>
+
+                </article>
+
+
+                <article class="analytics-card">
+
+                    <div class="analytics-card-top">
+                        <span>Completed</span>
+                        <span class="analytics-icon green" aria-hidden="true">✓</span>
+                    </div>
+
+                    <h3 id="analyticsCompleted">—</h3>
+
+                    <p>Successfully completed</p>
+
+                </article>
+
+
+                <article class="analytics-card">
+
+                    <div class="analytics-card-top">
+                        <span>Average Waiting</span>
+                        <span class="analytics-icon orange" aria-hidden="true">◷</span>
+                    </div>
+
+                    <h3 id="analyticsWait">—</h3>
+
+                    <p>Minutes before being called</p>
+
+                </article>
+
+
+                <article class="analytics-card">
+
+                    <div class="analytics-card-top">
+                        <span>Skipped</span>
+                        <span class="analytics-icon red" aria-hidden="true">↷</span>
+                    </div>
+
+                    <h3 id="analyticsSkipped">—</h3>
+
+                    <p>Skipped queue entries</p>
+
+                </article>
+
+            </div>
+
+
+            <!-- ANALYTICS CHARTS -->
+
+            <div class="analytics-grid">
+
+                <!-- HOURLY CUSTOMER ACTIVITY -->
+
+                <article class="analytics-panel hourly-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <h3>Customer Activity</h3>
+
+                            <p>
+                                Number of tokens generated each hour
+                            </p>
+                        </div>
+
+                        <span class="chart-legend">
+                            <span></span>
+                            Customers
+                        </span>
+
+                    </div>
+
+
+                    <div class="chart-container">
+
+                        <div
+                            class="chart-y-axis"
+                            id="chartYAxis"
+                            aria-hidden="true"
+                        >
+                            <span>—</span>
+                        </div>
+
+                        <div
+                            class="hourly-chart"
+                            id="hourlyChart"
+                            aria-label="Hourly customer activity chart"
+                        >
+                            <p class="chart-placeholder">
+                                Loading chart...
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="busiest-hour"
+                        id="busiestHour"
+                        aria-live="polite"
+                    >
+                        Busiest hour: calculating...
+                    </div>
+
+                </article>
+
+
+                <!-- COUNTER PERFORMANCE -->
+
+                <article class="analytics-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <h3>Counter Performance</h3>
+
+                            <p>
+                                Service activity by counter
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="counter-performance-list"
+                        id="counterPerformance"
+                    >
+                        <p class="chart-placeholder">
+                            Loading counter performance...
+                        </p>
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <p class="analytics-note">
+                Analytics are calculated from the customer records stored
+                in your database.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================
+             QUEUE CONTROLS
+        ====================================== -->
+
+        <section class="action-panel">
+
+            <div>
+                <h3>Queue Controls</h3>
+
+                <p>
+                    Manage the next customer in line.
+                </p>
+            </div>
+
+            <button
+                class="primary-btn"
+                id="callNextBtn"
+                type="button"
+            >
+                ➜ &nbsp; Call Next Customer
+            </button>
+
+        </section>
+
+
+        <!-- =====================================
+             SERVICE COUNTERS
+             admin.js creates the counter panel
+             dynamically using this navigation ID.
+        ====================================== -->
+
+        <!-- =====================================
+             CUSTOMER QUEUE
+        ====================================== -->
+
+        <section
+            class="queue-panel"
+            id="queueSection"
+            aria-labelledby="queueHeading"
+        >
+
+            <div class="queue-heading">
+
+                <div>
+                    <h2 id="queueHeading">Customer Queue</h2>
+
+                    <p>
+                        View and manage every queue entry.
+                    </p>
+                </div>
+
+                <span class="live-badge">
+                    <span></span>
+                    LIVE QUEUE
+                </span>
+
+            </div>
+
+
+            <!-- SEARCH AND FILTER -->
+
+            <div class="toolbar">
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search token or customer..."
+                    aria-label="Search customers"
+                >
+
+                <select
+                    id="statusFilter"
+                    aria-label="Filter customers by status"
+                >
+                    <option value="all">All statuses</option>
+                    <option value="Waiting">Waiting</option>
+                    <option value="Serving">Serving</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Skipped">Skipped</option>
+                </select>
+
+            </div>
+
+
+            <!-- QUEUE TABLE -->
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th scope="col">TOKEN</th>
+                            <th scope="col">CUSTOMER</th>
+                            <th scope="col">SERVICE</th>
+                            <th scope="col">STATUS</th>
+                            <th scope="col">COUNTER</th>
+                            <th scope="col">ACTIONS</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="queueTableBody"></tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                class="empty-state"
+                id="emptyState"
+                hidden
+            >
+                <div>☷</div>
+
+                <h3>No customers found</h3>
+
+                <p>
+                    Try another search or add a customer from the main website.
+                </p>
+            </div>
+
+
+            <!-- TABLE FOOTER -->
+
+            <div class="table-footer">
+
+                <span id="resultCount" aria-live="polite">
+                    0 customers
+                </span>
+
+                <span>QueueLess Management</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+            © 2026 QueueLess · Virtual Queue Management
+        </footer>
+
+    </main>
+
+
+    <!-- DASHBOARD JAVASCRIPT -->
+
+    <script src="admin.js"></script>
+
+</body>
+</html>
+

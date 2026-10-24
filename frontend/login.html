@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QueueLess | Admin Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <main class="login-card">
+        <div class="logo">Q</div>
+        <p class="eyebrow">QUEUELESS MANAGEMENT</p>
+        <h1>Admin Login</h1>
+        <p class="subtitle">Sign in to manage your queue and counters.</p>
+
+        <form id="loginForm">
+            <label for="username">Username</label>
+            <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter admin username"
+                autocomplete="username"
+                required
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter admin password"
+                autocomplete="current-password"
+                required
+            >
+
+            <button type="submit" id="loginButton">Sign In</button>
+            <p id="message" role="alert" aria-live="polite"></p>
+        </form>
+
+        <a href="index.html" class="back-link">← Back to QueueLess</a>
+    </main>
+
+    <script src="login.js"></script>
+</body>
+</html>
+
